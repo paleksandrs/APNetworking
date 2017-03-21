@@ -11,7 +11,7 @@ import UIKit
 class JsonRequestBuilder {
     
     
-    func defaultJsonRequest(url: URL, httpMethod: HttpMethod, headers: HTTPHeaders?) -> NSMutableURLRequest {
+    func jsonRequest(url: URL, httpMethod: HttpMethod, headers: HTTPHeaders?, httpBody: Parameters? = nil) -> NSMutableURLRequest? {
         
         let request = NSMutableURLRequest(url: url)
         request.httpMethod = httpMethod.rawValue
@@ -27,13 +27,6 @@ class JsonRequestBuilder {
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("application/json", forHTTPHeaderField: "Accept")
         
-        return request
-    }
-    
-    func jsonRequest(url: URL, httpBody: Parameters?, httpMethod: HttpMethod, headers: HTTPHeaders?) throws -> NSMutableURLRequest{
-        
-        let request = defaultJsonRequest(url: url, httpMethod: httpMethod, headers: headers)
-        
         if let json = httpBody {
             do {
                 
@@ -41,10 +34,10 @@ class JsonRequestBuilder {
                 request.httpBody = body
             }catch {
                 
-                throw APNetworkingError.failedToSerializeHttpBodyJson
+                return nil
             }
         }
-        
+
         return request
     }
 }

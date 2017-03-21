@@ -22,7 +22,7 @@ class ViewController: UIViewController {
         let url = URL(string: "https://jsonplaceholder.typicode.com/posts")!
         
         var customHeaders = HTTPHeaders()
-        customHeaders["Custom-Header"] = "Value"
+        customHeaders.append((key: "Custom-Header", value: "Value"))
         
         let jsonRequest = JsonRequest<GetPostsParser>()
         
@@ -41,7 +41,6 @@ class ViewController: UIViewController {
         let url = URL(string: "https://jsonplaceholder.typicode.com/posts")!
         
         let dummyJson = ["key1" : nil, "key2" : "value2"]
-   
 
         let jsonRequest = JsonRequest<EmptyResponse>()
         

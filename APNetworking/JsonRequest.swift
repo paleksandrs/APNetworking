@@ -9,9 +9,11 @@
 import Foundation
 
 enum HttpMethod: String {
+    
     case post = "POST"
     case put = "PUT"
     case get = "GET"
+    case delete = "DELETE"
 }
 
 public typealias HTTPHeaders = [(key: String, value: String)]
@@ -37,24 +39,35 @@ public class JsonRequest<P: GenericResponseParser> {
 
     public func get(url: URL, headers: HTTPHeaders? = nil, success: ((P.GenericResponseEntity?) -> Void)? = nil, failure: ((Error) -> Void)? = nil) {
         
-        let request = jsonRequestBuilder.defaultJsonRequest(url: url, httpMethod: .get, headers: headers)
+        let request = jsonRequestBuilder.jsonRequest(url: url, httpMethod: .get, headers: headers)
         query(request: request, success: success, failure: failure)
     }
     
     public func post(url: URL, body: Parameters? = nil, headers: HTTPHeaders? = nil, success: ((P.GenericResponseEntity?) -> Void)? = nil, failure: ((Error) -> Void)? = nil) {
-        
-        do {
-            
-            let request = try jsonRequestBuilder.jsonRequest(url: url, httpBody: body, httpMethod: .post, headers: headers)
-            query(request: request, success: success, failure: failure)
-            
-        } catch {
-           
-            failure?(error)
-        }
+    
+        let request = jsonRequestBuilder.jsonRequest(url: url, httpMethod: .post, headers: headers, httpBody: body)
+        query(request: request, success: success, failure: failure)
     }
     
-    private func query(request: NSMutableURLRequest, success: ((P.GenericResponseEntity?) -> Void)? = nil, failure: ((Error) -> Void)? = nil) {
+    public func put(url: URL, body: Parameters? = nil, headers: HTTPHeaders? = nil, success: ((P.GenericResponseEntity?) -> Void)? = nil, failure: ((Error) -> Void)? = nil) {
+        
+        let request = jsonRequestBuilder.jsonRequest(url: url, httpMethod: .put, headers: headers, httpBody: body)
+        query(request: request, success: success, failure: failure)
+    }
+    
+    public func delete(url: URL, body: Parameters? = nil, headers: HTTPHeaders? = nil, success: ((P.GenericResponseEntity?) -> Void)? = nil, failure: ((Error) -> Void)? = nil) {
+        
+        let request = jsonRequestBuilder.jsonRequest(url: url, httpMethod: .delete, headers: headers, httpBody: body)
+        query(request: request, success: success, failure: failure)
+    }
+    
+    private func query(request: NSMutableURLRequest?, success: ((P.GenericResponseEntity?) -> Void)? = nil, failure: ((Error) -> Void)? = nil) {
+        
+        guard let request = request else {
+            
+            failure?(APNetworkingError.failedToCreateRequest)
+            return
+        }
         
         let task = session.dataTask(with: request as URLRequest) { (data, response, error) in
             
@@ -95,19 +108,17 @@ public class JsonRequest<P: GenericResponseParser> {
 
     private func handleSuccess(data: Data?, success: ((P.GenericResponseEntity?) -> Void)?  = nil, failure: ((Error) -> Void)? = nil) {
         
-        let parser = P()
-        
         guard let jsonData = data else {
-            
-            failure?(APNetworkingError.emptyData)
+  
+            handleError(error: APNetworkingError.emptyData, failure: failure)
             return
         }
         
         do {
             
             let json = try JSONSerialization.jsonObject(with: jsonData, options:[]) as? Json
-            
-            if let entity = parser.parse(json: json) {
+        
+            if let entity = P().parse(json: json) {
                 
                 dispatcher.async {
                     success?(entity)

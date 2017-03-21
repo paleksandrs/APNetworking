@@ -11,6 +11,6 @@ public enum APNetworkingError: Error {
     case unexpectedJSON
     case invalidJSON
     case emptyData
-    case failedToSerializeHttpBodyJson
+    case failedToCreateRequest
     case requestError
 }
