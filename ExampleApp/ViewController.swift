@@ -13,23 +13,41 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         
-        var urlComponents = URLComponents()
-        urlComponents.scheme = "https"
-        urlComponents.host = "jsonplaceholder.typicode.com"
-        urlComponents.path = "/posts"
-        // urlComponents.queryItems = config.queryItems
+        getRequest()
+    }
+    
+    private func getRequest() {
         
+        let url = URL(string: "https://jsonplaceholder.typicode.com/posts")!
         
-        var request = URLRequest(url: urlComponents.url!)
-        request.httpMethod = "GET"
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        var customHeaders = HTTPHeaders()
+        customHeaders["Custom-Header"] = "Value"
         
-        let re = APHTTPRequest(request: request, responseParser: PostParser())
-        re.query(success: { (post) in
+        let jsonRequest = JsonRequest<GetPostsParser>()
+        
+        jsonRequest.get(url: url, headers: customHeaders, success: { (post) in
             
-            print(post)
+            print("Posts: \(post)")
+            
+        }) { (error) in
+            
+            print(error)
+        }
+    }
+    
+    private func postRequest() {
+        
+        let url = URL(string: "https://jsonplaceholder.typicode.com/posts")!
+        
+        let dummyJson = ["key1" : nil, "key2" : "value2"]
+   
+
+        let jsonRequest = JsonRequest<EmptyResponse>()
+        
+        jsonRequest.post(url: url, body: dummyJson, success: { (post) in
+            
+            print("Posts: \(post)")
             
         }) { (error) in
             

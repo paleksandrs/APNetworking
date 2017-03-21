@@ -7,22 +7,32 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA54B9E71E7FF21F00A8DD1A /* JsonRequestGetTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA54B9E61E7FF21F00A8DD1A /* JsonRequestGetTests.swift */; };
+		FA54B9E91E7FF36900A8DD1A /* MockURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA54B9E81E7FF36900A8DD1A /* MockURLSession.swift */; };
+		FA54B9EC1E7FF3C300A8DD1A /* MockURLSessionDataTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA54B9EB1E7FF3C300A8DD1A /* MockURLSessionDataTask.swift */; };
+		FA54B9F01E80237200A8DD1A /* EmptyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA54B9EF1E80237200A8DD1A /* EmptyResponse.swift */; };
+		FA54B9F41E803FF100A8DD1A /* Dispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA54B9F31E803FF100A8DD1A /* Dispatcher.swift */; };
+		FA54B9F71E8040FA00A8DD1A /* MockDispatcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA54B9F61E8040FA00A8DD1A /* MockDispatcher.swift */; };
+		FA54B9FC1E8172CD00A8DD1A /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA54B9FA1E8172CD00A8DD1A /* Post.swift */; };
+		FA54B9FD1E8172CD00A8DD1A /* GetPostsParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA54B9FB1E8172CD00A8DD1A /* GetPostsParser.swift */; };
+		FA54BA001E81821200A8DD1A /* APNetworkingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA54B9FF1E81821200A8DD1A /* APNetworkingError.swift */; };
+		FA54BA021E81854900A8DD1A /* JsonRequestPostTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA54BA011E81854900A8DD1A /* JsonRequestPostTests.swift */; };
 		FA98ED891E79816000C36231 /* APNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA98ED7F1E79816000C36231 /* APNetworking.framework */; };
-		FA98ED8E1E79816000C36231 /* APNetworkingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA98ED8D1E79816000C36231 /* APNetworkingTests.swift */; };
 		FA98ED901E79816000C36231 /* APNetworking.h in Headers */ = {isa = PBXBuildFile; fileRef = FA98ED821E79816000C36231 /* APNetworking.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FA98EDA01E79819800C36231 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA98ED9F1E79819800C36231 /* AppDelegate.swift */; };
 		FA98EDA21E79819800C36231 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA98EDA11E79819800C36231 /* ViewController.swift */; };
 		FA98EDA51E79819800C36231 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA98EDA31E79819800C36231 /* Main.storyboard */; };
 		FA98EDA71E79819800C36231 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA98EDA61E79819800C36231 /* Assets.xcassets */; };
 		FA98EDAA1E79819800C36231 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FA98EDA81E79819800C36231 /* LaunchScreen.storyboard */; };
-		FA98EDB21E79A45200C36231 /* APHTTPRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA98EDB11E79A45200C36231 /* APHTTPRequest.swift */; };
+		FA98EDB21E79A45200C36231 /* JsonRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA98EDB11E79A45200C36231 /* JsonRequest.swift */; };
 		FA98EDB41E79A5EF00C36231 /* GenericResponseParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA98EDB31E79A5EF00C36231 /* GenericResponseParser.swift */; };
 		FA98EDB61E79A6A800C36231 /* URLSessionProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA98EDB51E79A6A800C36231 /* URLSessionProtocol.swift */; };
 		FA98EDB81E79A74F00C36231 /* URLSessionDataTaskProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA98EDB71E79A74F00C36231 /* URLSessionDataTaskProtocol.swift */; };
 		FAC59C001E7AD4FF009E0C54 /* APNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA98ED7F1E79816000C36231 /* APNetworking.framework */; };
 		FAC59C011E7AD4FF009E0C54 /* APNetworking.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = FA98ED7F1E79816000C36231 /* APNetworking.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		FAC59C041E7AEF1E009E0C54 /* PostParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC59C031E7AEF1E009E0C54 /* PostParser.swift */; };
+		FAC59C041E7AEF1E009E0C54 /* GetPostsParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC59C031E7AEF1E009E0C54 /* GetPostsParser.swift */; };
 		FAC59C061E7AEF3C009E0C54 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC59C051E7AEF3C009E0C54 /* Post.swift */; };
+		FAC59C0B1E7C2FC7009E0C54 /* JsonRequestBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAC59C0A1E7C2FC7009E0C54 /* JsonRequestBuilder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,11 +67,20 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		FA54B9E61E7FF21F00A8DD1A /* JsonRequestGetTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonRequestGetTests.swift; sourceTree = "<group>"; };
+		FA54B9E81E7FF36900A8DD1A /* MockURLSession.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockURLSession.swift; sourceTree = "<group>"; };
+		FA54B9EB1E7FF3C300A8DD1A /* MockURLSessionDataTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockURLSessionDataTask.swift; sourceTree = "<group>"; };
+		FA54B9EF1E80237200A8DD1A /* EmptyResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyResponse.swift; sourceTree = "<group>"; };
+		FA54B9F31E803FF100A8DD1A /* Dispatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Dispatcher.swift; sourceTree = "<group>"; };
+		FA54B9F61E8040FA00A8DD1A /* MockDispatcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockDispatcher.swift; sourceTree = "<group>"; };
+		FA54B9FA1E8172CD00A8DD1A /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		FA54B9FB1E8172CD00A8DD1A /* GetPostsParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetPostsParser.swift; sourceTree = "<group>"; };
+		FA54B9FF1E81821200A8DD1A /* APNetworkingError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APNetworkingError.swift; sourceTree = "<group>"; };
+		FA54BA011E81854900A8DD1A /* JsonRequestPostTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonRequestPostTests.swift; sourceTree = "<group>"; };
 		FA98ED7F1E79816000C36231 /* APNetworking.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = APNetworking.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA98ED821E79816000C36231 /* APNetworking.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = APNetworking.h; sourceTree = "<group>"; };
 		FA98ED831E79816000C36231 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA98ED881E79816000C36231 /* APNetworkingTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = APNetworkingTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		FA98ED8D1E79816000C36231 /* APNetworkingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APNetworkingTests.swift; sourceTree = "<group>"; };
 		FA98ED8F1E79816000C36231 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA98ED9D1E79819800C36231 /* ExampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ExampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA98ED9F1E79819800C36231 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -70,12 +89,13 @@
 		FA98EDA61E79819800C36231 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		FA98EDA91E79819800C36231 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		FA98EDAB1E79819800C36231 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		FA98EDB11E79A45200C36231 /* APHTTPRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APHTTPRequest.swift; sourceTree = "<group>"; };
+		FA98EDB11E79A45200C36231 /* JsonRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonRequest.swift; sourceTree = "<group>"; };
 		FA98EDB31E79A5EF00C36231 /* GenericResponseParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericResponseParser.swift; sourceTree = "<group>"; };
 		FA98EDB51E79A6A800C36231 /* URLSessionProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLSessionProtocol.swift; sourceTree = "<group>"; };
 		FA98EDB71E79A74F00C36231 /* URLSessionDataTaskProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URLSessionDataTaskProtocol.swift; sourceTree = "<group>"; };
-		FAC59C031E7AEF1E009E0C54 /* PostParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostParser.swift; sourceTree = "<group>"; };
+		FAC59C031E7AEF1E009E0C54 /* GetPostsParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetPostsParser.swift; sourceTree = "<group>"; };
 		FAC59C051E7AEF3C009E0C54 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		FAC59C0A1E7C2FC7009E0C54 /* JsonRequestBuilder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JsonRequestBuilder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +125,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FA54B9EA1E7FF37000A8DD1A /* Mocks */ = {
+			isa = PBXGroup;
+			children = (
+				FA54B9E81E7FF36900A8DD1A /* MockURLSession.swift */,
+				FA54B9EB1E7FF3C300A8DD1A /* MockURLSessionDataTask.swift */,
+				FA54B9F61E8040FA00A8DD1A /* MockDispatcher.swift */,
+			);
+			name = Mocks;
+			sourceTree = "<group>";
+		};
+		FA54B9F51E80400400A8DD1A /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				FA54B9F31E803FF100A8DD1A /* Dispatcher.swift */,
+				FA54B9FF1E81821200A8DD1A /* APNetworkingError.swift */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
+		FA54B9FE1E8172D200A8DD1A /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				FA54B9FA1E8172CD00A8DD1A /* Post.swift */,
+				FA54B9FB1E8172CD00A8DD1A /* GetPostsParser.swift */,
+			);
+			name = Helpers;
+			sourceTree = "<group>";
+		};
 		FA98ED751E79816000C36231 = {
 			isa = PBXGroup;
 			children = (
@@ -128,12 +176,11 @@
 		FA98ED811E79816000C36231 /* APNetworking */ = {
 			isa = PBXGroup;
 			children = (
+				FA54B9F51E80400400A8DD1A /* Helpers */,
+				FAC59C0F1E7C3D6D009E0C54 /* Protocols */,
+				FAC59C0E1E7C3CA1009E0C54 /* Request */,
 				FA98ED821E79816000C36231 /* APNetworking.h */,
 				FA98ED831E79816000C36231 /* Info.plist */,
-				FA98EDB11E79A45200C36231 /* APHTTPRequest.swift */,
-				FA98EDB31E79A5EF00C36231 /* GenericResponseParser.swift */,
-				FA98EDB51E79A6A800C36231 /* URLSessionProtocol.swift */,
-				FA98EDB71E79A74F00C36231 /* URLSessionDataTaskProtocol.swift */,
 			);
 			path = APNetworking;
 			sourceTree = "<group>";
@@ -141,7 +188,10 @@
 		FA98ED8C1E79816000C36231 /* APNetworkingTests */ = {
 			isa = PBXGroup;
 			children = (
-				FA98ED8D1E79816000C36231 /* APNetworkingTests.swift */,
+				FA54B9FE1E8172D200A8DD1A /* Helpers */,
+				FA54B9EA1E7FF37000A8DD1A /* Mocks */,
+				FA54B9E61E7FF21F00A8DD1A /* JsonRequestGetTests.swift */,
+				FA54BA011E81854900A8DD1A /* JsonRequestPostTests.swift */,
 				FA98ED8F1E79816000C36231 /* Info.plist */,
 			);
 			path = APNetworkingTests;
@@ -152,7 +202,7 @@
 			children = (
 				FA98ED9F1E79819800C36231 /* AppDelegate.swift */,
 				FA98EDA11E79819800C36231 /* ViewController.swift */,
-				FAC59C031E7AEF1E009E0C54 /* PostParser.swift */,
+				FAC59C031E7AEF1E009E0C54 /* GetPostsParser.swift */,
 				FAC59C051E7AEF3C009E0C54 /* Post.swift */,
 				FA98EDA31E79819800C36231 /* Main.storyboard */,
 				FA98EDA61E79819800C36231 /* Assets.xcassets */,
@@ -160,6 +210,26 @@
 				FA98EDAB1E79819800C36231 /* Info.plist */,
 			);
 			path = ExampleApp;
+			sourceTree = "<group>";
+		};
+		FAC59C0E1E7C3CA1009E0C54 /* Request */ = {
+			isa = PBXGroup;
+			children = (
+				FA98EDB11E79A45200C36231 /* JsonRequest.swift */,
+				FAC59C0A1E7C2FC7009E0C54 /* JsonRequestBuilder.swift */,
+				FA54B9EF1E80237200A8DD1A /* EmptyResponse.swift */,
+			);
+			name = Request;
+			sourceTree = "<group>";
+		};
+		FAC59C0F1E7C3D6D009E0C54 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				FA98EDB51E79A6A800C36231 /* URLSessionProtocol.swift */,
+				FA98EDB71E79A74F00C36231 /* URLSessionDataTaskProtocol.swift */,
+				FA98EDB31E79A5EF00C36231 /* GenericResponseParser.swift */,
+			);
+			name = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -308,8 +378,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA54B9F01E80237200A8DD1A /* EmptyResponse.swift in Sources */,
 				FA98EDB61E79A6A800C36231 /* URLSessionProtocol.swift in Sources */,
-				FA98EDB21E79A45200C36231 /* APHTTPRequest.swift in Sources */,
+				FA98EDB21E79A45200C36231 /* JsonRequest.swift in Sources */,
+				FAC59C0B1E7C2FC7009E0C54 /* JsonRequestBuilder.swift in Sources */,
+				FA54B9F41E803FF100A8DD1A /* Dispatcher.swift in Sources */,
+				FA54BA001E81821200A8DD1A /* APNetworkingError.swift in Sources */,
 				FA98EDB81E79A74F00C36231 /* URLSessionDataTaskProtocol.swift in Sources */,
 				FA98EDB41E79A5EF00C36231 /* GenericResponseParser.swift in Sources */,
 			);
@@ -319,7 +393,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				FA98ED8E1E79816000C36231 /* APNetworkingTests.swift in Sources */,
+				FA54B9F71E8040FA00A8DD1A /* MockDispatcher.swift in Sources */,
+				FA54B9EC1E7FF3C300A8DD1A /* MockURLSessionDataTask.swift in Sources */,
+				FA54BA021E81854900A8DD1A /* JsonRequestPostTests.swift in Sources */,
+				FA54B9E91E7FF36900A8DD1A /* MockURLSession.swift in Sources */,
+				FA54B9E71E7FF21F00A8DD1A /* JsonRequestGetTests.swift in Sources */,
+				FA54B9FD1E8172CD00A8DD1A /* GetPostsParser.swift in Sources */,
+				FA54B9FC1E8172CD00A8DD1A /* Post.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -328,7 +408,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FA98EDA21E79819800C36231 /* ViewController.swift in Sources */,
-				FAC59C041E7AEF1E009E0C54 /* PostParser.swift in Sources */,
+				FAC59C041E7AEF1E009E0C54 /* GetPostsParser.swift in Sources */,
 				FA98EDA01E79819800C36231 /* AppDelegate.swift in Sources */,
 				FAC59C061E7AEF3C009E0C54 /* Post.swift in Sources */,
 			);

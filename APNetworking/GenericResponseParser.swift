@@ -6,13 +6,14 @@
 //  Released under an MIT license: http://opensource.org/licenses/MIT
 //
 
-import UIKit
+import Foundation
 
 public typealias Json = [AnyObject]
 
 public protocol GenericResponseParser {
     
     associatedtype GenericResponseEntity
-
+    
+    init()
     func parse(json: Json?) -> GenericResponseEntity?
 }

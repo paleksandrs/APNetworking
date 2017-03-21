@@ -8,7 +8,7 @@
 
 import APNetworking
 
-struct PostParser: GenericResponseParser {
+struct GetPostsParser: GenericResponseParser {
     
     typealias GenericReponseEntity = [Post]
     

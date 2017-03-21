@@ -6,11 +6,8 @@
 //  Released under an MIT license: http://opensource.org/licenses/MIT
 //
 
-import Foundation
-
-public protocol URLSessionDataTaskProtocol {
+struct Post {
     
-    func resume()
+    let id: Int
+    let title: String
 }
-
-extension URLSessionDataTask: URLSessionDataTaskProtocol { }

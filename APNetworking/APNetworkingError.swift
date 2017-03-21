@@ -6,11 +6,11 @@
 //  Released under an MIT license: http://opensource.org/licenses/MIT
 //
 
-import Foundation
-
-public protocol URLSessionDataTaskProtocol {
+public enum APNetworkingError: Error {
     
-    func resume()
+    case unexpectedJSON
+    case invalidJSON
+    case emptyData
+    case failedToSerializeHttpBodyJson
+    case requestError
 }
-
-extension URLSessionDataTask: URLSessionDataTaskProtocol { }

@@ -8,9 +8,13 @@
 
 import Foundation
 
-public protocol URLSessionDataTaskProtocol {
+class Dispatcher {
     
-    func resume()
+    func async(execute: @escaping @convention(block) () -> Swift.Void) {
+        
+        DispatchQueue.main.async  {
+            
+            execute()
+        }
+    }
 }
-
-extension URLSessionDataTask: URLSessionDataTaskProtocol { }
