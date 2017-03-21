@@ -1,7 +1,7 @@
 # APNetworking
  [![license MIT](https://img.shields.io/cocoapods/l/JSQCoreDataKit.svg)][mitLink]
  
-An easy way to make Rest API calls. 
+A convenient way to make Rest API calls and parse data from JSON responses. 
 
 ## Requirements
 * Xcode 8
@@ -10,7 +10,7 @@ An easy way to make Rest API calls.
 
 ## Installation
 
-##### [CocoaPods](http://cocoapods.org). Please use the latest CocoaPods as this framework is using Swift 3  
+[CocoaPods](http://cocoapods.org). Please use the latest CocoaPods as this framework is using Swift 3  
 
 ````ruby
 use_frameworks!
@@ -20,18 +20,18 @@ pod 'APNetworking'
 ````
 ## Usage 
 
-##### Use `JsonRequest`to create `post`, `get`, `put`, `delete` requests. Create your own parser confiming to `GenericResponseEntity` and set it for the request using angle brackets and get fully parsed object back. 
+Use `JsonRequest`to create `post`, `get`, `put` or `delete` request. Create your own parser confirming to `GenericResponseParser`, set it for the request using angle brackets and get fully parsed object back. 
 
 ````swift
 let url = URL(string: "https://jsonplaceholder.typicode.com/posts")!
-
-let jsonRequest = JsonRequest<GetPostsParser>()
-        
-jsonRequest.get(url: url, success: { (posts) in
+let request = JsonRequest<GetPostsParser>()
+request.get(url: url, success: { (posts) in
 
 // array of Post objects 
             
-}) { (error) in }
+}) { (error) in 
+
+}
 
 ````
 
