@@ -9,11 +9,11 @@
 import XCTest
 @testable import APNetworking
 
-class JsonRequestGetTests: XCTestCase {
+class JsonTaskTests: XCTestCase {
     
     private var task: MockURLSessionDataTask!
     private var session: MockURLSession!
-    private var url: URL!
+    private var request: NSMutableURLRequest!
     
     override func setUp() {
         super.setUp()
@@ -22,69 +22,46 @@ class JsonRequestGetTests: XCTestCase {
         
         session = MockURLSession()
         session.task = task
-        
-        url = URL(string: "http://test.com")!
+
+        request = NSMutableURLRequest(url: URL(string: "http://test.com")!)
     }
-
-    func testCallingGetResumesTaskFromURLSession() {
-
-        let request = emptyResponseRequest()
+    
+    func testCallingQueryResumesTaskFromURLSession() {
         
-        request.get(url: url)
+        let jsonTask = emptyResponseTask()
+        
+        jsonTask.query(request: request)
         
         XCTAssertTrue(task.resumeWasCalled)
     }
-    
-    func testGetRequestIsCorrect() {
-        
-        let request = emptyResponseRequest()
-        
-        request.get(url: url)
-        
-        XCTAssertEqual(session.request!.httpMethod, "GET")
-    }
-    
-    func testGetRequestHasCorrectHeaders() {
-        
-        let request = emptyResponseRequest()
-        
-        request.get(url: url, headers: [(key: "my", value: "header")])
-        
-        let urlRequest = session.request!
-        
-        XCTAssertEqual(urlRequest.allHTTPHeaderFields?.count, 3)
-        XCTAssertEqual(urlRequest.allHTTPHeaderFields?["Content-Type"], "application/json")
-        XCTAssertEqual(urlRequest.allHTTPHeaderFields?["Accept"], "application/json")
-        XCTAssertEqual(urlRequest.allHTTPHeaderFields?["my"], "header")
-    }
 
-    func testWhenCallingGetFailsWithError_ErrorIsReturned() {
+    func testWhenQueryFailsWithError_ErrorIsReturned() {
         
         session.error = APNetworkingError.requestError
         
-        let request = emptyResponseRequest()
+        let jsonTask = emptyResponseTask()
         
         var errorFromResponse: Error?
-        request.get(url: url, success: nil) { (error) in
+        jsonTask.query(request: request, success: nil) { (error) in
             
             errorFromResponse = error
         }
         
         XCTAssertNotNil(errorFromResponse)
     }
-    
-    func testWhenGetReturnsSuccessStatusCode_SuccessCallbackCalled() {
+
+    func testWhenQueryReturnsSuccessStatusCode_SuccessCallbackCalled() {
         
         session.data = "{}".data(using: .utf8)
         
-        let request = emptyResponseRequest()
-    
+        let jsonTask = emptyResponseTask()
+        
         for code in Array(200..<300) {
             
             session.response = successfulResponse(statusCode: code as Int)
             
             var successCalled = false
-            request.get(url: url, success: { (_) in
+            jsonTask.query(request: request, success: { (_) in
                 
                 successCalled = true
             })
@@ -92,10 +69,10 @@ class JsonRequestGetTests: XCTestCase {
             XCTAssertTrue(successCalled)
         }
     }
-    
-    func testWhenGetReturnsFailureStatusCode_ErrorReturned() {
+
+    func testWhenQueryReturnsFailureStatusCode_ErrorReturned() {
         
-        let request = emptyResponseRequest()
+        let jsonTask = emptyResponseTask()
         
         var failureCode = Array(100..<200)
         failureCode.append(contentsOf: Array(300..<600))
@@ -105,40 +82,40 @@ class JsonRequestGetTests: XCTestCase {
             session.response = successfulResponse(statusCode: code as Int)
             
             var errorFromResponse: Error?
-            request.get(url: url, success: nil, failure: { (error) in
+            jsonTask.query(request: request, success: nil, failure: { (error) in
                 
                 errorFromResponse = error
             })
-
+            
             XCTAssertEqual(errorFromResponse  as? APNetworkingError, APNetworkingError.requestError)
         }
     }
-    
-    func testWhenGetReturnsSuccessStatusCode_NilData_EmptyDataErrorReturned() {
+
+    func testWhenQueryReturnsSuccessStatusCode_NilData_EmptyDataErrorReturned() {
         
         session.response = successfulResponse()
         session.data = nil
-
-        let request = emptyResponseRequest()
-    
+        
+        let jsonTask = emptyResponseTask()
+        
         var errorFromResponse: Error?
-        request.get(url: url, success: nil) { (error) in
+        jsonTask.query(request: request, success: nil) { (error) in
             errorFromResponse = error
         }
         
         XCTAssertEqual(errorFromResponse  as? APNetworkingError, APNetworkingError.emptyData)
     }
-    
-    func testWhenGetReturnsSuccess_ResponseIsSerialized() {
+
+    func testWhenQueryReturnsSuccess_ResponseIsSerialized() {
         
         session.response = successfulResponse()
         session.data = "[{\"id\": 1, \"title\": \"title\"}]".data(using: .utf8)
-    
-        let request = JsonRequest<GetPostsParser>(session: session, dispatcher: MockDispatcher())
+        
+        let jsonTask = JsonTask<GetPostsParser>(session: session, dispatcher: MockDispatcher())
         
         var returnedPost: [Post]?
         
-        request.get(url: url, success: { (posts) in
+        jsonTask.query(request: request, success: { (posts) in
             
             returnedPost = posts
         })
@@ -146,32 +123,32 @@ class JsonRequestGetTests: XCTestCase {
         XCTAssertNotNil(returnedPost)
         XCTAssertEqual(returnedPost?.count, 1)
     }
-    
-    func testWhenGetReturnsSuccessWithUnexpectedData_ErrorIsReturned() {
+
+    func testWhenQueryReturnsSuccessWithUnexpectedData_ErrorIsReturned() {
         
         session.response = successfulResponse()
         session.data = "[{\"id\": 1, \"title2\": \"title\"}]".data(using: .utf8)
         
-        let request = JsonRequest<GetPostsParser>(session: session, dispatcher: MockDispatcher())
+        let jsonTask = JsonTask<GetPostsParser>(session: session, dispatcher: MockDispatcher())
         
         var errorFromResponse: Error?
-        request.get(url: url, failure: { error in
+        jsonTask.query(request: request, failure: { error in
             
             errorFromResponse = error
         })
         
         XCTAssertEqual(errorFromResponse  as? APNetworkingError, APNetworkingError.unexpectedJSON)
     }
-    
-    func testWhenGetReturnsSuccessWithInvalidJson_ErrorIsReturned() {
+
+    func testWhenQueryReturnsSuccessWithInvalidJson_ErrorIsReturned() {
         
         session.response = successfulResponse()
         session.data = "{invalid}".data(using: .utf8)
         
-        let request = JsonRequest<GetPostsParser>(session: session, dispatcher: MockDispatcher())
+        let jsonTask = JsonTask<GetPostsParser>(session: session, dispatcher: MockDispatcher())
         
         var errorFromResponse: Error?
-        request.get(url: url, failure: { error in
+        jsonTask.query(request: request, failure: { error in
             
             errorFromResponse = error
         })
@@ -180,15 +157,15 @@ class JsonRequestGetTests: XCTestCase {
     }
     
     // MARK: Helpers
+
     
     private func successfulResponse(statusCode: Int = 200) -> HTTPURLResponse {
         
-        return HTTPURLResponse(url: url, statusCode: statusCode, httpVersion: nil, headerFields: nil)!
+        return HTTPURLResponse(url: URL(string: "http://test.com")!, statusCode: statusCode, httpVersion: nil, headerFields: nil)!
     }
     
-    private func emptyResponseRequest() -> JsonRequest<EmptyResponse> {
+    private func emptyResponseTask() -> JsonTask<EmptyResponse> {
         
-        return  JsonRequest<EmptyResponse>(session: session, dispatcher: MockDispatcher())
+        return  JsonTask<EmptyResponse>(session: session, dispatcher: MockDispatcher())
     }
-    
 }

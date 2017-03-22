@@ -18,6 +18,6 @@ public struct EmptyResponse: GenericResponseParser {
     
     public func parse(json: Json?) -> GenericReponseEntity? {
         
-        return nil
+        return ()
     }
 }
