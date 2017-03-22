@@ -107,7 +107,7 @@ request.get(url: url, success: { photos in
 }
 ````
 
-#####Same way you can make `post`, `get`, `put` or `delete` requests. You can also pass custom headers to the call.
+##### Same way you can make `post`, `get`, `put` or `delete` requests. You can also pass custom headers to the call.
 
 
 
