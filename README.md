@@ -23,7 +23,7 @@ pod 'APNetworking'
 Use `JsonRequest`to create `post`, `get`, `put` or `delete` request. Create your own parser confirming to `GenericResponseParser`, set it for the request using angle brackets and get fully parsed object back. 
 
 
-##Example:
+## Example:
 
 Say you have an API call that returns `JSON` of photos:
 
