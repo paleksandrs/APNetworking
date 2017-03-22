@@ -42,8 +42,7 @@ Say you have an API call that returns `JSON` of photos:
     "title": "reprehenderit est deserunt velit ipsam",
     "url": "http://placehold.it/600/771796",
     "thumbnailUrl": "http://placehold.it/150/771796"
-  },
-…
+  }
 ]
 ````
 
