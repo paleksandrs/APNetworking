@@ -26,9 +26,11 @@ class ViewController: UIViewController {
         
         let jsonRequest = JsonRequest<GetPostsParser>()
         
-        jsonRequest.get(url: url, headers: customHeaders, success: { (post) in
+        jsonRequest.get(url: url, headers: customHeaders, success: { (posts) in
             
-            print("Posts: \(post)")
+            for post in posts {
+                print(post.title)
+            }
             
         }) { (error) in
             

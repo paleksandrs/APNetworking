@@ -37,31 +37,31 @@ public class JsonRequest<P: GenericResponseParser> {
         self.dispatcher = Dispatcher()
     }
 
-    public func get(url: URL, headers: HTTPHeaders? = nil, success: ((P.GenericResponseEntity?) -> Void)? = nil, failure: ((Error) -> Void)? = nil) {
+    public func get(url: URL, headers: HTTPHeaders? = nil, success: ((P.GenericResponseEntity) -> Void)? = nil, failure: ((Error) -> Void)? = nil) {
         
         let request = jsonRequestBuilder.jsonRequest(url: url, httpMethod: .get, headers: headers)
         query(request: request, success: success, failure: failure)
     }
     
-    public func post(url: URL, body: Parameters? = nil, headers: HTTPHeaders? = nil, success: ((P.GenericResponseEntity?) -> Void)? = nil, failure: ((Error) -> Void)? = nil) {
+    public func post(url: URL, body: Parameters? = nil, headers: HTTPHeaders? = nil, success: ((P.GenericResponseEntity) -> Void)? = nil, failure: ((Error) -> Void)? = nil) {
     
         let request = jsonRequestBuilder.jsonRequest(url: url, httpMethod: .post, headers: headers, httpBody: body)
         query(request: request, success: success, failure: failure)
     }
     
-    public func put(url: URL, body: Parameters? = nil, headers: HTTPHeaders? = nil, success: ((P.GenericResponseEntity?) -> Void)? = nil, failure: ((Error) -> Void)? = nil) {
+    public func put(url: URL, body: Parameters? = nil, headers: HTTPHeaders? = nil, success: ((P.GenericResponseEntity) -> Void)? = nil, failure: ((Error) -> Void)? = nil) {
         
         let request = jsonRequestBuilder.jsonRequest(url: url, httpMethod: .put, headers: headers, httpBody: body)
         query(request: request, success: success, failure: failure)
     }
     
-    public func delete(url: URL, body: Parameters? = nil, headers: HTTPHeaders? = nil, success: ((P.GenericResponseEntity?) -> Void)? = nil, failure: ((Error) -> Void)? = nil) {
+    public func delete(url: URL, body: Parameters? = nil, headers: HTTPHeaders? = nil, success: ((P.GenericResponseEntity) -> Void)? = nil, failure: ((Error) -> Void)? = nil) {
         
         let request = jsonRequestBuilder.jsonRequest(url: url, httpMethod: .delete, headers: headers, httpBody: body)
         query(request: request, success: success, failure: failure)
     }
     
-    private func query(request: NSMutableURLRequest?, success: ((P.GenericResponseEntity?) -> Void)? = nil, failure: ((Error) -> Void)? = nil) {
+    private func query(request: NSMutableURLRequest?, success: ((P.GenericResponseEntity) -> Void)? = nil, failure: ((Error) -> Void)? = nil) {
         
         guard let request = request else {
             
@@ -106,7 +106,7 @@ public class JsonRequest<P: GenericResponseParser> {
         }
     }
 
-    private func handleSuccess(data: Data?, success: ((P.GenericResponseEntity?) -> Void)?  = nil, failure: ((Error) -> Void)? = nil) {
+    private func handleSuccess(data: Data?, success: ((P.GenericResponseEntity) -> Void)?  = nil, failure: ((Error) -> Void)? = nil) {
         
         guard let jsonData = data else {
   
